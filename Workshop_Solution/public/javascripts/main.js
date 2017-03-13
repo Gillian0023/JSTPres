@@ -86,7 +86,7 @@ function ComposerChart(data){
                 var nameArray = d.name.split(" ");
                 var name = "";
                 for(var i=0; i<nameArray.length-1; i++){
-                    name += nameArray[i].slice(0,1) + ".";
+                    name += nameArray[i].slice(0,1) + ". ";
                 }
                 name += nameArray[nameArray.length -1];
                 return name;
@@ -137,7 +137,7 @@ function addTooltips(composers){
 
         div	.html(d.name + "<br/>" + d.yearBirth + "-" + d.yearDeath)
             .style("left", body_padding + array[index].transform.animVal[0].matrix.e + "px")
-            .style("top", (array[index].transform.animVal[0].matrix.f - 20) + "px");
+            .style("top", (array[index].transform.animVal[0].matrix.f - 0) + "px");
         //make tooltip appear
         div.transition()
             .duration(100)
