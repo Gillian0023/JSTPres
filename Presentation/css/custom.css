@@ -1,10 +1,13 @@
 .left {
   text-align: left;
-  width:50%;
+  width:70%;
   float: left;  
 }
 .right {
   text-align: left;
-  width:50%;
+  width:30%;
   float: right;
+}
+svg {
+  margin: 20px auto;
 }
