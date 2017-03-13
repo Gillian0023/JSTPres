@@ -1,0 +1,184 @@
+<html>
+<head>
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/theme/white.css">
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h1>Data Driven Documents: Data visualization using D3.js</h1>
+            <p>Sandro Bauer, Lin Ji, Daniel Schubert, Simon Zachau</p>
+        </section>
+        <section>
+            <h2>Structure</h2>
+            <section>
+                <ul>
+                    <li>Definition</li>
+                    <li>Reasons for why we should use it</li>
+                    <li>Instruction on how to use it</li>
+                    <li>Look & feel</li>
+                    <li>Alternatives</li>
+                    <ul>
+                        <li>Chart.js</li>
+                        <li>Raphael.js</li>
+                        <li>nvd3.js</li>
+                    </ul>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <h2>Definition</h2>
+            <section>
+                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at ligula et nibh ultricies vestibulum. Donec a bibendum metus. Proin elementum hendrerit ullamcorper. Integer at mattis elit.</p>
+            </section>
+        </section>
+        <section>
+            <h2>Reasons for why we should use it</h2>
+            <section>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </section>
+        </section>
+        <section>
+            <h2>Instruction on how to use it</h2>
+            <section>
+            TODO: Basics to SVGs<br>
+            <div class="left">
+                <p data-markdown>- This is my first left element</p>
+                <p data-markdown>- This is my second left element</p>
+                <!-- more Elements -->
+            </div>
+            <div class="right">
+                <svg class="bubble"></svg>
+            </div>
+            </section>
+            <section>
+                TODO: select, data-binding, enter, exit, append
+                <pre><code class="hljs" data-trim contenteditable>
+                    // an empty selection.
+                    // looking for instantiations of data
+                    d3.selectAll('div')
+                    // data, which would be bound to a
+                    // selection
+                    .data([1, 2, 3])
+                    // for every time that we see data
+                    // but we do not see an element
+                    .enter()
+                    // append an element
+                    .append('div')
+                    // and fill it with text
+                    .text(String);
+                </code></pre>
+                <!--button>Run</button-->
+            </section>
+            <section>
+                TODO: scale, attr, axis, transitions
+            </section>
+            <section>
+                <h3>Events</h3>
+                <pre><code class="hljs">
+                    TODO: code from below
+                </code></pre>
+            </section>
+        </section>
+        <section>
+            <h2>Look & feel</h2>
+            <section>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </section>
+        </section>
+        <section>
+            <h2>Alternatives</h2>
+            <section>
+                <h3>Chart.js</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </section>
+            <section>
+                <h3>Raphael.js</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </section>
+            <section>
+                <h3>nvd3.js</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </section>
+        </section>
+        <section>
+            <h1></h1>
+            <p></p>
+        </section>
+        <section>
+            <h1></h1>
+            <p></p>
+        </section>
+        <section>
+            <h1></h1>
+            <p></p>
+        </section>
+    </div>
+</div>
+<script src="js/reveal.js"></script>
+<script src="lib/js/head.min.js"></script>
+<script src="js/d3.min.js"></script>
+<script src="plugin/highlight/highlight.js"></script>
+<script>
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: false,
+        width: "1280",
+        height: "720",
+        //margin: 0,
+
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+            //{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            //{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            //{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+            //{ src: 'plugin/zoom-js/zoom.js', async: true },
+            //{ src: 'plugin/notes/notes.js', async: true }
+        ]
+    });
+
+    /*var svg = d3.select("#circle");
+    var circle = svg.select("svg").data([1000]);
+    circle.enter().append("circle")
+        .attr("cy", 0)
+        .attr("cx", 0)
+        .attr('r', function(d) { return Math.sqrt(d); });*/
+//    circle.transition()
+//        .attr("r", function(d) { return Math.sqrt(d); });
+    //circle.exit().transition()
+     //   .attr('r', 0)
+     //   .remove();
+</script>
+<script type="text/javascript">
+    // does not work yet, no idea why
+    var svg = d3.select(".bubble");
+    var circle = svg.selectAll("circle").data([100,50]);
+    circle.enter().append("circle")
+        .attr("cy", 0)
+        .attr("cx", 0)
+        .attr('r', function(d) { return d; })
+        .attr("fill", "#f0f");
+</script>
+<script>
+    circle.on("mouseover", function(d, index, array){
+        circle.transition().duration(100)
+            .style("fill", "#0FF");
+
+
+    }).on("mouseout", function(d) {
+        //make tooltip disappear
+        circle.transition().duration(100)
+            .style("fill", "#F00");
+    });
+</script>
+</body>
+</html>
