@@ -26,36 +26,35 @@
         </section>
         <section>
             <h2>Structure</h2>
-            <section>
+            <ul>
+                <li>Definition</li>
+                <li>Reasons for why we should use it</li>
+                <li>Instruction on how to use it</li>
+                <li>Look & feel</li>
+                <li>Alternatives</li>
                 <ul>
-                    <li>Definition</li>
-                    <li>Reasons for why we should use it</li>
-                    <li>Instruction on how to use it</li>
-                    <li>Look & feel</li>
-                    <li>Alternatives</li>
-                    <ul>
-                        <li>Chart.js</li>
-                        <li>Raphael.js</li>
-                        <li>nvd3.js</li>
-                    </ul>
+                    <li>Chart.js</li>
+                    <li>Raphael.js</li>
+                    <li>nvd3.js</li>
                 </ul>
-            </section>
+            </ul>
         </section>
-        <section>
+        <section id="definition">
             <h2>Definition</h2>
-            <section>
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc at ligula et nibh ultricies vestibulum. Donec a bibendum metus. Proin elementum hendrerit ullamcorper. Integer at mattis elit.</p>
-            </section>
+            <ul>
+                <li><strong class="highlight">D3</strong>: <strong class="highlight">D</strong>ata-<strong class="highlight">D</strong>riven <strong class="highlight">D</strong>ocuments</li>
+                <li>Manipulates documents based on data</li>
+                <li>Library for creating and manipulating SVG/HTML <span class="fragment red">&rarr; no charting library!</span></li>
+                <li>Successor to Protovis</li>
+            </ul>
         </section>
-        <section>
+        <section id="reasons">
             <h2>Reasons for why we should use it</h2>
-            <section>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </section>
         </section>
-        <section>
+        <section id="instruction">
             <h2>Instruction on how to use it</h2>
-            <section>
+            <section id="canvas">
             TODO: Basics to SVGs<br>
             <div class="left">
                 <pre><code class="html hljs" data-trim>
@@ -77,10 +76,10 @@
                 <!-- more Elements -->
             </div>
             <div class="right">
-                <svg class="canvasRect"></svg>
+                <svg class="canvas"></svg>
             </div>
             </section>
-            <section>
+            <section id="circle">
                 TODO: select, data-binding, enter, exit, append
                 <div class="left">
                 <pre><code class="html hljs" data-trim>
@@ -98,7 +97,7 @@
                 </code></pre>
                 </div>
                 <div class="right">
-                    <svg class="canvasCircle"></svg>
+                    <svg class="canvas"></svg>
                 </div>
                 <aside class="notes">
                     Binding macht irgendwas
@@ -108,32 +107,73 @@
             <section>
                 TODO: scale, attr, axis, transitions
             </section>
-            <section>
+            <section id="events">
                 <h3>Events</h3>
-                <pre><code class="hljs">
-                    TODO: code from below
+                <div class="left">
+                <pre><code class="html hljs" data-trim>
+                    <svg class="canvas"></svg>
                 </code></pre>
+                    <!-- contenteditable in code, if you want it to run -->
+                    <pre><code class="javascript hljs" data-trim>
+                    var circle = svg.selectAll("circle").data([80]);
+                    // append circle
+                    circle.enter().append("circle")
+                        .attr("cx", 100) // x position of center
+                        .attr("cy", 100) // y position of center
+                        .attr('r', function(d) { return d; }) // radius
+                        .attr("fill", "#f0f"); // color
+                </code></pre>
+                </div>
+                <div class="right">
+                    <svg class="canvas"></svg>
+                </div>
             </section>
         </section>
-        <section>
+        <section id="lookandfeel">
             <h2>Look & feel</h2>
             <section>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </section>
         </section>
-        <section>
+        <section id="alternatives">
             <h2>Alternatives</h2>
             <section>
                 <h3>Chart.js</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <ul>
+                    <li>Easy, object oriented client side graphs for designers and developers</li>
+                    <li>6 chart types</li>
+                </ul>
             </section>
             <section>
-                <h3>Raphael.js</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h3>Raphaël.js</h3>
+                <ul>
+                    <li>Also uses SVG for rendering</li>
+                    <li>Provides abstraction layer for browsers which do not support SVG</li>
+                    <li>Uses VML for older IE</li>
+                </ul>
+                <div class="left">
+                    <pre><code class="javascript hljs" data-trim>
+                        // Creates canvas 320 × 200 at raphaelCircle
+                        var paper = Raphael("raphaelCircle", 320, 200);
+
+                        // Creates circle at x = 50, y = 40, with radius 10
+                        var circle = paper.circle(50, 40, 20);
+                        // Sets the fill attribute of the circle to red (#f00)
+                        circle.attr("fill", "#f00");
+                        // Sets the stroke attribute of the circle to white
+                        circle.attr("stroke", "#fff");
+                    </code></pre>
+                </div>
+                <div class="right">
+                    <div id="raphaelCircle"></div>
+                </div>
             </section>
             <section>
                 <h3>nvd3.js</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <ul>
+                    <li>Building re-usable charts and chart components</li>
+                    <li>Based on D3.js</li>
+                </ul>
             </section>
         </section>
         <section>
@@ -153,8 +193,12 @@
 <script src="lib/js/head.min.js"></script>
 <script src="js/reveal.js"></script>
 <script src="js/d3.min.js"></script>
+<script src="js/raphael.min.js"></script>
+<script src="js/chart.min.js"></script>
 <script src="plugin/highlight/highlight.js"></script>
 <script>
+    // Reveal.js Code
+
     // More info https://github.com/hakimel/reveal.js#configuration
     Reveal.initialize({
         controls: true,
@@ -189,35 +233,57 @@
      //   .remove();
 </script>
 <script type="text/javascript">
-    // does not work yet, no idea why
-    var svgSelect = d3.select(".canvasRect")
-        .attr("width", "100%")
-        .attr("height", "300px");
-    svgSelect.append("rect")
-        .attr("width", "100%")
-        .attr("height", "100%")
-        .attr("fill", "#ffa");
+    // D3.js Code
 
-    var svg = d3.select(".canvasCircle")
+    // does not work yet, no idea why
+    var svg = d3.selectAll(".canvas")
         .attr("width", "100%")
         .attr("height", "300px");
     svg.append("rect")
         .attr("width", "100%")
         .attr("height", "100%")
         .attr("fill", "#ffa");
-    var circle = svg.selectAll("circle").data([80]);
-    circle.enter().append("circle")
-        .attr("cy", 100)
-        .attr("cx", 100)
-        .attr('r', function(d) { return d; })
-        .attr("fill", "#f0f");
-    svg.on("mouseover", function(d, index, array){
-        circle.transition().duration(100)
-            .attr("fill", "#0ff");
-    }).on("mouseout", function(d) {
-        circle.transition().duration(100)
-            .attr("fill", "#ff0");
-    });
+
+    Reveal.addEventListener( 'slidechanged', function( event ) {
+        // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+        svg.on("mousrover", null);
+        svg.on("mouseout", null);
+        svg.selectAll("circle").remove();
+        if (event.currentSlide == null) {
+            return;
+        }
+        if (event.currentSlide.id == "circle" || event.currentSlide.id == "events") {
+            var circle = svg.selectAll("circle").data([80]);
+            circle.enter().append("circle")
+                .attr("cy", 100)
+                .attr("cx", 100)
+                .attr('r', function(d) { return d; })
+                .attr("fill", "#f00");
+        }
+        if (event.currentSlide.id == "events") {
+            svg.on("mouseover", function(d, index, array){
+                svg.selectAll("circle").transition().duration(500)
+                    .attr("cx", 200);
+            }).on("mouseout", function(d) {
+                svg.selectAll("circle").transition().duration(500)
+                    .attr("cx", 100);
+            });
+        }
+    } );
+</script>
+<script>
+    // Raphael.js Code
+
+    // Creates canvas 320 × 200 at raphaelCircle
+    var rPaper = Raphael("raphaelCircle", 320, 200);
+
+    // Creates circle at x = 50, y = 40, with radius 10
+    var rCircle = rPaper.circle(50, 40, 20);
+    // Sets the fill attribute of the circle to red (#f00)
+    rCircle.attr("fill", "#f00");
+
+    // Sets the stroke attribute of the circle to white
+    rCircle.attr("stroke", "#00f");
 </script>
 </body>
 </html>

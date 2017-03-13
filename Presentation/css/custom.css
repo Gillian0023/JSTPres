@@ -8,6 +8,15 @@
   width:30%;
   float: right;
 }
+.red {
+  color: #ff0000;
+}
 svg {
   margin: 20px auto;
+}
+.highlight {
+  color: #0000ff;
+}
+p {
+  text-align: left;
 }
