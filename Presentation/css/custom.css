@@ -1,11 +1,11 @@
 .left {
   text-align: left;
-  width:70%;
+  width:920px;
   float: left;  
 }
 .right {
   text-align: left;
-  width:30%;
+  width:360px;
   float: right;
 }
 .red {
@@ -13,10 +13,21 @@
 }
 svg {
   margin: 20px auto;
+  border: 2px solid black;
+  box-shadow: 0 0 6px #0003;
 }
 .highlight {
   color: #0000ff;
 }
-p {
+p, ul, li, div {
   text-align: left;
+}
+.reveal section img {
+  border: none;
+  box-shadow: none;
+}
+.reveal section img.center {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
