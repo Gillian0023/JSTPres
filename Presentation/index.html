@@ -47,13 +47,20 @@
                 <li><strong class="highlight">D3</strong>: <strong class="highlight">D</strong>ata-<strong class="highlight">D</strong>riven <strong class="highlight">D</strong>ocuments</li>
                 <li>JavaScript library ...</li>
                 <li>... for manipulating documents based on data</li>
-                <li>Works on SVG/HTML <span class="fragment red">&rarr; no charting library!</span></li>
+                <li>Works on SVG/HTML/CSS <span class="fragment red">&rarr; no charting library!</span></li>
                 <li>Successor to Protovis</li>
             </ul>
         </section>
         <section id="reasons">
             <h2>Reasons for why we should use it</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <br><br>
+            <ul>
+                <li>Flexible</li>
+                <li>No plugin</li>
+                <li>Designers can focus on data and visualization(mouse interation)</li>
+                <li>Community and examples -<strong class="highlight">D3 Gallery</strong></li>
+            </ul>
         </section>
         <section id="instruction">
             <h2>Instruction on how to use it</h2>
@@ -77,7 +84,7 @@
                 </div>
             </section>
             <section id="canvas">
-                <h3>SVG with D3</h3>
+                <h4>Selections(CSS selectors)</h4>
                 <div class="left">
                     <pre><code class="html hljs" data-trim>
                         <svg class="canvas"></svg>
@@ -87,13 +94,23 @@
                             .attr("width", "360")
                             .attr("height", "300");
                     </code></pre>
+                    <br>
+                    <pre><code class="html hljs" data-trim>
+                        <svg id="canvas"></svg>
+                    </code></pre>
+                    <pre><code class="javascript hljs" data-trim>
+                        var svg = d3.selectAll("#canvas")
+                            .attr("width", "360")
+                            .attr("height", "300");
+                    </code></pre>
+
                 </div>
                 <div class="right">
                     <svg class="canvas"></svg>
                 </div>
             </section>
             <section id="rect">
-                <h3>Rect</h3>
+                <h4>Joins-Rect</h4>
                 <div class="left">
                     <pre><code class="html hljs" data-trim>
                         <svg class="canvas"></svg>
@@ -111,7 +128,7 @@
                 </div>
             </section>
             <section id="circle">
-                <h3>Circle</h3>
+                <h4>Data binding-Circle</h4>
                 <div class="left">
                     <pre><code class="html hljs" data-trim>
                         <svg class="canvas"></svg>
