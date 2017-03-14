@@ -1,0 +1,43 @@
+{
+ "name": "flare",
+ "children": [
+  {
+   "name": "cluster",
+   "children": [
+    {
+     "name": "Raphael.js",
+     "img": "img/raphael.png"
+    },
+    {
+     "name": "Anychart",
+     "img": "img/anychart.png"
+    },
+    {
+     "name": "Pixi.js",
+     "img": "img/pixijs.png"
+    },
+    {
+     "name": "Chart.js",
+     "img": "img/chartjs.svg"
+    },
+    {
+     "name": "Google Charts",
+     "img": ""
+    }
+   ]
+  },
+  {
+   "name": "d3",
+   "children": [
+    {
+     "name": "nvd3.js",
+     "img": ""
+    },
+    {
+     "name": "C3.js",
+     "img": ""
+    }
+   ]
+  }
+ ]
+}

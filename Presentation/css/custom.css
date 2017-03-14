@@ -31,3 +31,9 @@ p, ul, li, div {
   margin-right: auto;
   display: block;
 }
+
+text {
+  font: 20px sans-serif;
+  text-anchor: middle;
+}
+

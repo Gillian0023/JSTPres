@@ -44,8 +44,9 @@
             <h2>Definition</h2>
             <ul>
                 <li><strong class="highlight">D3</strong>: <strong class="highlight">D</strong>ata-<strong class="highlight">D</strong>riven <strong class="highlight">D</strong>ocuments</li>
-                <li>Manipulates documents based on data</li>
-                <li>Library for creating and manipulating SVG/HTML <span class="fragment red">&rarr; no charting library!</span></li>
+                <li>JavaScript library <span class="fragment">...</span></li>
+                <li>... for manipulating documents based on data</li>
+                <li>Works on SVG/HTML <span class="fragment red">&rarr; no charting library!</span></li>
                 <li>Successor to Protovis</li>
             </ul>
         </section>
@@ -203,7 +204,8 @@
                 </ul>
             </section>
             <section id="alternativesummary">
-                <div>
+                <svg class="alternativepics"></svg>
+                <!--div>
                     <img height="200" src="img/raphael.png">
                     <img height="200" src="img/chartjs.svg">
                     <img height="200" src="img/anychart.png">
@@ -220,20 +222,8 @@
                     <li>C3.js</li>
                     <li>nvd3.js</li>
                 </ul>
-                </div>
+                </div-->
             </section>
-        </section>
-        <section>
-            <h1></h1>
-            <p></p>
-        </section>
-        <section>
-            <h1></h1>
-            <p></p>
-        </section>
-        <section>
-            <h1></h1>
-            <p></p>
         </section>
     </div>
 </div>
@@ -286,10 +276,9 @@
     var svg = d3.selectAll(".canvas")
         .attr("width", "360")
         .attr("height", "300");
-
     Reveal.addEventListener( 'slidechanged', function( event ) {
         // event.previousSlide, event.currentSlide, event.indexh, event.indexv
-        svg.on("mousrover", null);
+        svg.on("mouseover", null);
         svg.on("mouseout", null);
         svg.selectAll("circle").remove();
         svg.selectAll("rect").remove();
@@ -311,7 +300,7 @@
                     .attr("cy", 150)
                     .attr("cx", function(d,i) {return 80 + i * 100})
                     .attr('r', function(d) { return d; });
-                    //.attr("fill", "#f00");
+            //.attr("fill", "#f00");
             case "rect":
                 svg.append("rect")
                     .attr("x", "255")
@@ -321,6 +310,115 @@
                 break;
         }
     } );
+
+    var alternativesWidth = 1280,
+        alternativesHeight = 500;
+    var alternativeSVG = d3.select(".alternativepics")
+        .attr("width", alternativesWidth)
+        .attr("height", alternativesHeight),
+        g = alternativeSVG.append("g").attr("transform", "translate(2,2)"),
+        format = d3.format(",d");
+
+    var pack = d3.pack()
+        .size([alternativesWidth - 4, alternativesHeight - 4]);
+
+    d3.json("alternatives.json", function(error, root) {
+        if (error) throw error;
+
+        root = d3.hierarchy(root)
+            .sum(function(d) { return 1; });
+//            .sort(function(a, b) { return b.value - a.value; });
+
+        var node = g.selectAll(".node")
+            .data(pack(root).leaves());
+        var nodeEnter = node.enter().append("g")
+            .attr("class", function(d) { return d.children ? "node" : "leaf node"; })
+            .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+
+        // background circles
+        var circ = nodeEnter.append("circle")
+            .attr("r", function(d) { return d.r; })
+            .attr("fill", "#0003");
+
+        // text
+        nodeEnter.filter(function(d) { return !d.children && !d.data.img; })
+            .append("text")
+            .attr("dy", "0.3em")
+            .html(function(d) {
+                var splitted = d.data.name.split(" ");
+                var ret = "";
+                var i = 0;
+                if (splitted.length == 2) {
+                    splitted.forEach(function(entry) {
+                        ret += "<tspan x='0' dy='"+ i + "em'>" + entry + "</tspan>";
+                        i++;
+                    });
+                } else {
+                    ret = splitted[0];
+                }
+                return ret;
+            });
+            //.html(function(d) { return "<tspan>" d.data.name; "</tspan>" });
+
+        // images
+        nodeEnter.filter(function(d) { return !d.children; })
+            .append("svg:image")
+            .attr("xlink:href",  function(d) { return d.data.img;})
+            .attr("x", function(d) { return -circ.attr("r") * .8; })
+            .attr("y", function(d) { return -circ.attr("r") * .8; })
+            //.attr("y", function(d,i) { return -25;})
+            .attr("height", function(d) { return circ.attr("r") * 1.6; })
+            .attr("width", function(d) { return circ.attr("r") * 1.6; });
+    });
+
+    /*var format = d3.format(",d");
+    var pack = d3.pack()
+        .size([1280, 500])
+        .padding(1.5);
+
+    //var force = d3.layout.force();
+    var alternativeSVG = d3.select(".alternativepics")
+        .attr("width", "1280")
+        .attr("height", "500")
+        .attr("class", "bubble");
+    // Update the nodes…
+    var node = alternativeSVG.selectAll("g.node")
+        .data(pack([
+            "img/raphael.png",
+            "img/chartjs.svg",
+            "img/anychart.png",
+            "img/pixijs.png"
+        ]).descendants());
+    // Enter any new nodes.
+    var nodeEnter = node.enter().append("svg:g")
+        .attr("class", "node")
+        //.call(force.drag);
+        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+
+    node.append("title")
+        .text(function(d) { return format(d.value); });
+
+    // Append a circle
+    node.append("svg:circle")
+        .attr("r", function(d) { return d.r; })
+        //.attr("cx", function(d,i) { return 30 + i * 50})
+        //.attr("cy", "100")
+        .style("fill", "#eee");
+
+    node.append("text")
+        .attr("dy", ".3em")
+        .style("text-anchor", "middle")
+        .text(function(d) { return d; });*/
+
+    // Append images
+    /*var images = nodeEnter.append("svg:image")
+        .attr("xlink:href",  function(d) { return d;})
+        //.attr("x", function(d,i) { return 30 + i * 50 -25;})
+        //.attr("y", function(d,i) { return 30 + i * 50 -25;})
+        //.attr("y", function(d,i) { return -25;})
+        .attr("height", 100)
+        .attr("width", 100);*/
+
 </script>
 <script>
     // Raphael.js Code
