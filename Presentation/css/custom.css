@@ -39,4 +39,11 @@ text {
 .reveal section h3 img {
   margin: 0;
 }
+#references, #coolstuff {
+  text-align: left;
+  font-size: .7em;
+}
+#references {
+  font-size: .7em;
+}
 

@@ -226,6 +226,16 @@
                 </div-->
             </section>
         </section>
+        <section id="coolstuff">
+            <h2>Fun with D3</h2>
+            <aside class="notes">Mike Bostock, one of the lead developers in D3 worked at the NY Times as Lead of complex data-visualisation projects</aside>
+        </section>
+        <section>
+            <iframe height="700" width="1280" src="http://www.koalastothemax.com/"></iframe>
+        </section>
+        <section id="references">
+            <h2>References</h2>
+        </section>
     </div>
 </div>
 <script src="lib/js/head.min.js"></script>
@@ -295,13 +305,14 @@
                     svg.selectAll("circle").transition().duration(500)
                         .attr("cy", 150);
                 });
+                // no break because the fall through is planned
             case "circle":
                 var circle = svg.selectAll("circle").data([40, 20]);
                 circle.enter().append("circle")
                     .attr("cy", 150)
                     .attr("cx", function(d,i) {return 80 + i * 100})
                     .attr('r', function(d) { return d; });
-            //.attr("fill", "#f00");
+                // no break because the fall through is planned
             case "rect":
                 svg.append("rect")
                     .attr("x", "255")
@@ -434,6 +445,50 @@
 
     // Sets the stroke attribute of the circle to white
     rCircle.attr("stroke", "#00f");
+</script>
+<script>
+    // Cool Stuff you can do with D3
+    var stuffSection = document.getElementById("coolstuff");
+
+    var coolStuff = [
+        "http://www.koalastothemax.com/",
+        "https://www.jasondavies.com/parallel-sets/",
+        "https://www.theguardian.com/environment/interactive/2013/may/14/alaska-villages-frontline-global-warming",
+        "http://www.nytimes.com/interactive/2013/04/08/business/global/asia-map.html",
+        "http://www.nytimes.com/interactive/2013/05/25/sunday-review/corporate-taxes.html?_r=0",
+        "http://www.nytimes.com/interactive/2012/09/06/us/politics/convention-word-counts.html",
+    ];
+
+    coolStuff.forEach(function (entry) {
+        stuffSection.innerHTML += '<a href="' + entry + '">' + entry + "</a><br>";
+    });
+
+    // References
+    var refSection = document.getElementById("references");
+
+    var references = [
+        "https://github.com/hakimel/reveal.js",
+        "https://d3js.org/",
+        "https://github.com/d3/d3",
+        "https://en.wikipedia.org/wiki/D3.js",
+        "https://en.wikipedia.org/wiki/Mike_Bostock",
+        "https://en.wikipedia.org/wiki/Comparison_of_JavaScript_charting_frameworks",
+        "http://www.chartjs.org/",
+        "http://dmitrybaranovskiy.github.io/raphael/",
+        "https://en.wikipedia.org/wiki/Rapha%C3%ABl_(JavaScript_library)",
+        "http://nvd3.org/",
+        "http://www.anychart.com/",
+        "http://c3js.org/",
+        "http://www.highcharts.com/",
+        "https://developers.google.com/chart/",
+        "https://plot.ly/javascript/",
+        "http://www.flotcharts.org/",
+    ];
+
+    references.forEach(function (entry) {
+        refSection.innerHTML += '<a href="' + entry + '">' + entry + "</a><br>";
+    });
+
 </script>
 </body>
 </html>

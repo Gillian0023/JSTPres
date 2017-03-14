@@ -5,7 +5,7 @@
    "name": "cluster",
    "children": [
     {
-     "name": "Raphael.js",
+     "name": "Raphael",
      "img": "img/raphael.png"
     },
     {
@@ -23,6 +23,14 @@
     {
      "name": "Google Charts",
      "img": ""
+    },
+    {
+     "name": "Highcharts",
+     "img": "img/highcharts.png"
+    },
+    {
+     "name": "Flot",
+     "img": "img/flot.png"
     }
    ]
   },
@@ -30,12 +38,20 @@
    "name": "d3",
    "children": [
     {
-     "name": "nvd3.js",
+     "name": "NVD3",
      "img": ""
     },
     {
      "name": "C3.js",
      "img": ""
+    },
+    {
+     "name": "dc.js",
+     "img": "img/dc.png"
+    },
+    {
+     "name": "Plotly.js",
+     "img": "img/plotly.png"
     }
    ]
   }
