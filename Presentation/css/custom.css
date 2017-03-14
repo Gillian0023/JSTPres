@@ -36,4 +36,7 @@ text {
   font: 20px sans-serif;
   text-anchor: middle;
 }
+.reveal section h3 img {
+  margin: 0;
+}
 
