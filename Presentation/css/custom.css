@@ -47,3 +47,11 @@ text {
   font-size: .7em;
 }
 
+.reveal ul {
+  line-height: 2em;
+}
+
+.reveal h2 {
+  margin-bottom: 1em;
+}
+
