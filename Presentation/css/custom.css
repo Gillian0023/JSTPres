@@ -14,7 +14,8 @@
 svg {
   margin: 20px auto;
 }
-svg.demo {
+svg.demo,
+.demo svg {
   border: 2px solid black;
   box-shadow: 0 0 6px #0003;
 }
