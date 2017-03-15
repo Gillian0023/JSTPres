@@ -13,6 +13,8 @@
 }
 svg {
   margin: 20px auto;
+}
+svg.demo {
   border: 2px solid black;
   box-shadow: 0 0 6px #0003;
 }
@@ -37,7 +39,10 @@ text {
   text-anchor: middle;
 }
 .reveal section h3 img {
-  margin: 0;
+  margin: 0 0 0 50px;
+  height: 100px;
+  display: inline-block;
+  vertical-align: middle;
 }
 #references, #coolstuff {
   text-align: left;
