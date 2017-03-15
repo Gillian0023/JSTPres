@@ -27,22 +27,26 @@
             <br>
             By: Sandro Bauer, Lin Ji, Daniel Schubert, Simon Zachau
         </section>
-        <!--<section>
-            <h2>Structure</h2>
+        <section>
+            <h2>Table of contents</h2>
             <ul>
-                <li>Definition</li>
-                <li>Reasons for why we should use it</li>
-                <li>Instruction on how to use it</li>
-                <li>Look & feel</li>
+                <li>Definition</li><!-- Lin -->
+                <li>Getting started</li><!-- Sandro -->
+                <li>Focus</li><!-- Daniel -->
+                <li>Look & feel</li><!-- Simon -->
+                <li>Advantages &amp; Disadvantages</li><!-- Lin -->
                 <li>Alternatives</li>
                 <ul>
-                    <li>Chart.js</li>
-                    <li>Raphael.js</li>
-                    <li>nvd3.js</li>
+                    <li>Chart.js</li><!-- Simon -->
+                    <li>Raphael.js</li><!-- Lin -->
+                    <li>nvd3.js</li><!-- Lin -->
                 </ul>
+                <li>References</li><!-- Lin -->
+                <li>Q&amp;A</li><!-- Lin for transition, Questions to all -->
+                <li>Workshop</li><!-- All -->
             </ul>
-        </section-->
-        <section id="definition">
+        </section>
+        <section id="definition"><!-- Lin -->
             <!--<h2>Definition</h2-->
             <section>
                 <h2>D3 is <span class="red">not</span> ...</h2>
@@ -62,10 +66,9 @@
                 </ul>
             </section>
         </section>
-        <section id="instruction">
-            <h2>Instruction</h2>
+        <section id="instruction"><!-- Sandro -->
             <section id="svgbasics">
-                <h3>SVG</h3>
+                <h2>Getting started: <span class="highlight">SVG</span></h2>
                 <div class="left">
                     <pre><code class="html hljs" data-trim>
                         <svg width="360" height="300">
@@ -84,7 +87,7 @@
                 </div>
             </section>
             <section id="canvas">
-                <h3>Selections (CSS selectors)</h3>
+                <h2>Getting started: <span class="highlight">Selections</span></h2>
                 <div class="left">
                     <pre><code class="html hljs" data-trim>
                         <svg class="canvas"></svg>
@@ -94,13 +97,22 @@
                             .attr("width", "360")
                             .attr("height", "300");
                     </code></pre>
+                    <br>
+                    <!-- box außen rum? -->
+                    <pre><code class="html hljs" data-trim>
+                        <svg id="canvas"></svg>
+                    </code></pre>
+                    <pre><code class="javascript hljs" data-trim>
+                        var svg = d3.select("#canvas");
+                    </code></pre>
+
                 </div>
                 <div class="right">
                     <svg class="canvas demo"></svg>
                 </div>
             </section>
             <section id="rect">
-                <h3>Joins-Rect</h3>
+                <h2>Getting started: <span class="highlight">Joins-Rect</span></h2>
                 <div class="left">
                     <pre><code class="html hljs" data-trim>
                         <svg class="canvas"></svg>
@@ -118,18 +130,53 @@
                 </div>
             </section>
             <section id="circle">
-                <h3>Data binding-Circle</h3>
+                <h2>Getting started: <span class="highlight">Data binding-Circle</span></h2>
+                <div class="left">
+                        <pre><code class="html hljs" data-trim>
+                            <svg class="canvas"></svg>
+                        </code></pre>
+                    <!-- contenteditable in code, if you want it to run -->
+                    <pre><code class="javascript hljs" data-trim>
+                            var circle = svg.selectAll("circle").data([40, 20]);
+
+                            circle.enter().append("circle")
+
+                                // y position of center
+                                .attr("cy", 150)
+
+                                // x position of center
+                                .attr("cx", function(d,i) { return 80 + i * 100; })
+
+                                // radius
+                                .attr('r', function(d) { return d; });
+                        </code></pre>
+                </div>
+                <div class="right">
+                    <svg class="canvas demo"></svg>
+                </div>
+                <aside class="notes">
+                    Binding macht irgendwas
+                </aside>
+                <!--button>Run</button-->
+            </section>
+            <section id="complexdata">
+                <h2>Getting started: <span class="highlight">More complex data</span></h2>
                 <div class="left">
                     <pre><code class="html hljs" data-trim>
                         <svg class="canvas"></svg>
                     </code></pre>
                     <!-- contenteditable in code, if you want it to run -->
                     <pre><code class="javascript hljs" data-trim>
-                        var circle = svg.selectAll("circle").data([40, 20]);
+                        var data1 = {"radius": 40, "color": "blue"};
+                        var data2 = {"radius": 20, "color": "red"};
+
+                        var circle = svg.selectAll("circle").data([data1, data2]);
+
                         circle.enter().append("circle")
                             .attr("cy", 150)
                             .attr("cx", function(d,i) {return 80 + i * 100})
-                            .attr('r', function(d) { return d; });
+                            .attr('r', function(d) { return d.radius; })
+                            .attr("fill", function(d) { return d.color; });
                     </code></pre>
                 </div>
                 <div class="right">
@@ -140,12 +187,8 @@
                 </aside>
                 <!--button>Run</button-->
             </section>
-            <section>
-                <h3>Other stuff</h3>
-                TODO: scale, attr, axis, transitions
-            </section>
             <section id="events">
-                <h3>Events</h3>
+                <h2>Getting started: <span class="highlight">Events &amp; Transitions</span></h2>
                 <div class="left">
                     <pre><code class="html hljs" data-trim>
                         <svg class="canvas"></svg>
@@ -163,6 +206,20 @@
                 <div class="right">
                     <svg class="canvas demo"></svg>
                 </div>
+            </section>
+        </section>
+        <section id="focus"><!-- Daniel -->
+            <section>
+                <h2>Focus: Update cycle</h2>
+                TODO: Daniel
+            </section>
+            <section>
+                <h2>Focus: Scales &amp; Axes</h2>
+                TODO: Daniel
+            </section>
+            <section>
+                <h2>Focus: Events &amp; Transitions</h2>
+                TODO: Daniel
             </section>
         </section>
         <section id="lookandfeel">
@@ -245,11 +302,18 @@
             <h2>References</h2>
         </section>
         <section>
+            <h1>Q&amp;A</h1>
+        </section>
+        <section>
             <h2>Workshop</h2>
             TODO: Link how to get start-code (github)<br>
             TODO: Overview of most important D3 stuff<br>
             TODO: Example on how it could look like<br>
             TODO: JSON, how do the data look like
+        </section>
+        <section>
+            <h2>Project</h2>
+            TODO: ?
         </section>
     </div>
 </div>
@@ -321,12 +385,24 @@
                         .attr("cy", 150);
                 });
                 // no break because the fall through is planned
+            case "complexdata":
             case "circle":
-                var circle = svg.selectAll("circle").data([40, 20]);
-                circle.enter().append("circle")
-                    .attr("cy", 150)
-                    .attr("cx", function(d,i) {return 80 + i * 100})
-                    .attr('r', function(d) { return d; });
+                if (event.currentSlide.id == "circle") {
+                    var circle = svg.selectAll("circle").data([40, 20]);
+                    circle.enter().append("circle")
+                        .attr("cy", 150)
+                        .attr("cx", function(d,i) {return 80 + i * 100})
+                        .attr('r', function(d) { return d; });
+                } else {
+                    var data1 = {"radius": 40, "color": "blue"};
+                    var data2 = {"radius": 20, "color": "red"};
+                    var circle = svg.selectAll("circle").data([data1, data2]);
+                    circle.enter().append("circle")
+                        .attr("cy", 150)
+                        .attr("cx", function(d,i) {return 80 + i * 100})
+                        .attr('r', function(d) { return d.radius; })
+                        .attr("fill", function(d) { return d.color; });
+                }
                 // no break because the fall through is planned
             case "rect":
                 svg.append("rect")
@@ -463,7 +539,7 @@
 </script>
 <script>
     // Cool Stuff you can do with D3
-    var stuffSection = document.getElementById("coolstuff");
+    /*var stuffSection = document.getElementById("coolstuff");
 
     var coolStuff = [
         "http://www.koalastothemax.com/",
@@ -476,7 +552,7 @@
 
     coolStuff.forEach(function (entry) {
         stuffSection.innerHTML += '<a href="' + entry + '">' + entry + "</a><br>";
-    });
+    });*/
 
     // References
     var refSection = document.getElementById("references");
