@@ -55,6 +55,9 @@ text {
 #tableofcontent ul {
   line-height: 1.3em;
 }
+#tableofcontent h2 {
+  margin-bottom: 20px;
+}
 .reveal ul {
   line-height: 2em;
 }
