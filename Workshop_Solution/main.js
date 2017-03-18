@@ -58,7 +58,7 @@ function ComposerChart(data){
             .range([0, width]);
 
         //create axis and set tick-format
-        axis = d3.axisBottom(scale).tickFormat(d3.format(".0f"));
+        var axis = d3.axisBottom(scale).tickFormat(d3.format(".0f"));
 
         d3.select("#axis").transition().duration(500).call(axis);
 
@@ -96,12 +96,12 @@ function ComposerChart(data){
 
         //update (all)
         //--------------------------------------------------------------------
-        d3.selectAll(".composer rect")
+        new_composers.merge(composers).select("rect")
             .attr("width", function(d){return scale(d.yearDeath) - scale(d.yearBirth)})
             .attr("height", rectHeight)
             .style("fill", function(d){return colorMap[d.period]});
 
-        d3.selectAll(".composer")
+        new_composers.merge(composers)
             .transition().duration(500)
             .attr("transform", function(d, i){
                 var itemsPerColumn = Math.round((height-3*margin - 0.5*rectDistance)/rectDistance);
