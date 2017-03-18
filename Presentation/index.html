@@ -374,11 +374,64 @@
             <h1>Q&amp;A</h1>
         </section>
         <section>
-            <h2>Workshop</h2>
-            TODO: Link how to get start-code (github)<br>
-            TODO: Overview of most important D3 stuff<br>
-            TODO: Example on how it could look like<br>
-            TODO: JSON, how do the data look like
+            <section>
+                <h2>Workshop</h2>
+                TODO: Link how to get start-code (github)<br>
+                TODO: Overview of most important D3 stuff<br>
+                TODO: Example on how it could look like<br>
+                TODO: JSON, how do the data look like
+            </section>
+            <section>
+
+                <h3>Cheat sheet</h3>
+                <div class="cheat-sheet-element">
+                <span class="cheat-sheat-header">Create svg</span>
+                <pre style="margin:0px;margin-top:10px; width:100%"><code class="javascript hljs" data-trim>
+                        d3.select("body").append("svg");
+                    </code></pre>
+                </div>
+                <div class="cheat-sheet-element">
+                    <span class="cheat-sheat-header">Add event listener</span>
+                    <pre style="margin:0px;margin-top:10px; width:100%"><code class="javascript hljs" data-trim>
+                        selection.on("mouseover", function(){});
+                </code></pre>
+                </div>
+                <div class="cheat-sheet-element">
+                    <span class="cheat-sheat-header">Data joining (General update pattern)</span>
+                <pre style="margin:0px;margin-top:10px; width:100%"><code class="javascript hljs" data-trim>
+                        var nodes = svg.selectAll("rect").data(dataArray);
+                        nodes.exit().remove();
+                        nodes.enter().append("rect").attr(..).attr(..)
+                            .merge(nodes).attr(..).attr(..);
+                    </code></pre>
+                </div>
+                <div class="cheat-sheet-element">
+                    <span class="cheat-sheat-header">Set attribute</span>
+                    <pre style="margin:0px;margin-top:10px; width:100%"><code class="javascript hljs" data-trim>
+                        ..append("rect")
+                           .attr("class", "foo")
+                           .attr("x", function(d,i){...}
+                           .attr("height", 20);
+                </code></pre>
+                </div>
+                <div class="cheat-sheet-element">
+                    <span class="cheat-sheat-header">Create linear scale</span>
+                <pre style="margin:0px;margin-top:10px; width:100%"><code class="javascript hljs" data-trim>
+                    var scale = d3.scaleLinear()
+                        .domain([start, end])
+                        .range([start, end]);
+                </code></pre>
+                </div>
+                <div class="cheat-sheet-element">
+                    <span class="cheat-sheat-header">Create axis</span>
+                <pre style="margin:0px;margin-top:10px; width:100%"><code class="javascript hljs" data-trim>
+                    var axis = d3.axisBottom(scale);
+                    var group = svgElement.append("g")
+                        .attr("transform", "translate(x, y)");
+                    group.call(axis);
+                </code></pre>
+                </div>
+            </section>
         </section>
         <section>
             <section>
