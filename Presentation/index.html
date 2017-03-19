@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/theme/white.css">
     <link rel="stylesheet" href="lib/css/zenburn.css">
     <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/solution.css">
 
     <!-- Printing and PDF exports -->
     <script>
@@ -212,16 +213,83 @@
         </section>
         <section id="focus"><!-- Daniel -->
             <section>
-                <h2>Focus: Update cycle</h2>
-                TODO: Daniel
+                <h2>Focus: Data Joining</h2>
+                <div style="float:left; width:740px; font-size:50px; margin-top:60px">
+                    <span>Join by index</span>
+                    <pre style="margin:0px;margin-top:10px"><code class="javascript hljs" data-trim>
+                        svg.selectAll("circle").data(dataArray);
+                    </code></pre>
+                </div>
+                <img src="img/update.png" style="width:500px"/>
+            </section>
+            <section>
+                <h2>Focus: Data Joining</h2>
+                <div style="float:left; width:740px; font-size:50px; margin-top:60px">
+                    <span>Join by index</span>
+                    <pre style="margin:0px;margin-top:10px"><code class="javascript hljs" data-trim>
+                        svg.selectAll("circle").data(dataArray)
+                            .enter().append("circle");
+                    </code></pre>
+                </div>
+                <img src="img/enter.png" style="width:540px"/>
+            </section>
+            <section>
+                <h2>Focus: Data Joining</h2>
+                <div style="float:left; width:740px; font-size:50px; margin-top:60px">
+                    <span>Join by index</span>
+                    <pre style="margin:0px;margin-top:10px"><code class="javascript hljs" data-trim>
+                        svg.selectAll("circle").data(dataArray)
+                            .exit().remove();
+                    </code></pre>
+                </div>
+                <img src="img/exit.png" style="width:540px"/>
+            </section>
+            <section>
+                <h2>Focus: Data Joining</h2>
+                <div style="float:left; width:840px; font-size:50px; margin-top:20px; margin-right:10px">
+                    <span>General update pattern</span>
+                    <pre style="margin:0px;margin-top:10px; width:100%"><code class="javascript hljs" data-trim>
+                        var bars = svg.selectAll("rect").data(dataArray);
+
+                        bars.exit().remove();
+
+                        bars.enter().append("rect")
+                                .attr("y", function(d,i){return i * 30)
+                                .attr("height", 20)
+                            .merge(bars)
+                                .attr("width", function(d){return d});
+                    </code></pre>
+                </div>
+                <div id="uc1" style="margin-top:142px"></div>
+            </section>
+            <section>
+                <h2>Focus: Data Joining</h2>
+                <div style="float:left; width:760px; font-size:50px; margin-top:60px">
+                    <span>Join by key function</span>
+                    <pre style="margin:0px;margin-top:10px; width:100%"><code class="javascript hljs" data-trim>
+                        svg.selectAll("circle")
+                           .data(dataArray, function(d){return d.n});
+                    </code></pre>
+                </div>
+                <img src="img/keyfunction.png" style="width:470px"/>
             </section>
             <section>
                 <h2>Focus: Scales &amp; Axes</h2>
-                TODO: Daniel
-            </section>
-            <section>
-                <h2>Focus: Events &amp; Transitions</h2>
-                TODO: Daniel
+                <div style="width:1200px; font-size:50px; margin-top:50px">
+                    <pre style="margin:0px;margin-top:10px; width:100%"><code class="javascript hljs" data-trim>
+                        var scale = d3.scaleLinear().domain([0, 100000]).range([50, width+50]);
+
+                        svg.selectAll("circle").data([1000, 10000, 50000])
+                            .enter().append("circle")
+                                .attr("r", 10)
+                                .attr("cx", function(d){return scale(d)});
+
+                        var axis = d3.axisBottom(scale).tickFormat(d3.format("d"));
+                        var g = svgElement.append("g").attr("transform", "translate(0, 50)");
+                        g.call(axis);
+                    </code></pre>
+                </div>
+                <div id="sc1"></div>
             </section>
         </section>
         <section id="lookandfeel">
@@ -356,11 +424,67 @@
             <h1>Q&amp;A</h1>
         </section>
         <section>
-            <h2>Workshop</h2>
-            TODO: Link how to get start-code (github)<br>
-            TODO: Overview of most important D3 stuff<br>
-            TODO: Example on how it could look like<br>
-            TODO: JSON, how do the data look like
+            <section>
+                <h2>Workshop</h2>
+                TODO: Link how to get start-code (github)<br>
+                TODO: Overview of most important D3 stuff<br>
+                TODO: Example on how it could look like<br>
+                TODO: JSON, how do the data look like
+            </section>
+            <section>
+                <div id="solution"></div>
+            </section>
+            <section>
+
+                <h3>Cheat sheet</h3>
+                <div class="cheat-sheet-element">
+                <span class="cheat-sheat-header">Create svg</span>
+                <pre style="margin:0px;margin-top:10px; width:100%"><code class="javascript hljs" data-trim>
+                        d3.select("body").append("svg");
+                    </code></pre>
+                </div>
+                <div class="cheat-sheet-element">
+                    <span class="cheat-sheat-header">Add event listener</span>
+                    <pre style="margin:0px;margin-top:10px; width:100%"><code class="javascript hljs" data-trim>
+                        selection.on("mouseover", function(){});
+                </code></pre>
+                </div>
+                <div class="cheat-sheet-element">
+                    <span class="cheat-sheat-header">Data joining (General update pattern)</span>
+                <pre style="margin:0px;margin-top:10px; width:100%"><code class="javascript hljs" data-trim>
+                        var nodes = svg.selectAll("rect").data(dataArray);
+                        nodes.exit().remove();
+                        nodes.enter().append("rect").attr(..).attr(..)
+                            .merge(nodes).attr(..).attr(..);
+                    </code></pre>
+                </div>
+                <div class="cheat-sheet-element">
+                    <span class="cheat-sheat-header">Set attribute</span>
+                    <pre style="margin:0px;margin-top:10px; width:100%"><code class="javascript hljs" data-trim>
+                        ..append("rect")
+                           .attr("class", "foo")
+                           .attr("x", function(d,i){...}
+                           .attr("height", 20);
+                </code></pre>
+                </div>
+                <div class="cheat-sheet-element">
+                    <span class="cheat-sheat-header">Create linear scale</span>
+                <pre style="margin:0px;margin-top:10px; width:100%"><code class="javascript hljs" data-trim>
+                    var scale = d3.scaleLinear()
+                        .domain([start, end])
+                        .range([start, end]);
+                </code></pre>
+                </div>
+                <div class="cheat-sheet-element">
+                    <span class="cheat-sheat-header">Create axis</span>
+                <pre style="margin:0px;margin-top:10px; width:100%"><code class="javascript hljs" data-trim>
+                    var axis = d3.axisBottom(scale);
+                    var group = svgElement.append("g")
+                        .attr("transform", "translate(x, y)");
+                    group.call(axis);
+                </code></pre>
+                </div>
+            </section>
         </section>
         <section>
             <section>
@@ -394,7 +518,10 @@
 <script src="js/d3.min.js"></script>
 <script src="js/raphael.min.js"></script>
 <script src="js/chart.min.js"></script>
-<script src="js/ChartsChartJs.js"></script>
+<script src="scripts/ChartsChartJs.js"></script>
+<script src="scripts/uc1Controller.js"></script>
+<script src="scripts/sc1Controller.js"></script>
+<script src="scripts/solutionController.js"></script>
 <script src="plugin/highlight/highlight.js"></script>
 <script>
     // Reveal.js Code

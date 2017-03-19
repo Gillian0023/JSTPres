@@ -1,0 +1,46 @@
+.composer{
+  cursor: pointer;
+}
+
+#solution {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.composer text{
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: sans-serif;
+  fill: black;
+  text-anchor: start;
+}
+
+.legend rect{
+  fill: white;
+  stroke: aquamarine;
+  rx: 5px;
+  ry: 5px;
+}
+
+.legendText{
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  text-anchor: start;
+}
+
+.legendItem{
+  cursor: pointer;
+}
+
+#solution div#tooltip{
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: white;
+  border:solid grey;
+  border-radius: 5px;
+  text-align: center;
+  padding: 7px 7px;
+  position: absolute;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+#axis text{
+  font: 10px "Lucida Grande", Helvetica, Arial, sans-serif;
+}

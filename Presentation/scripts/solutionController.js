@@ -18,12 +18,12 @@ d3.json("composers.json", function(data){
 
 function ComposerChart(data){
 
-    var width = 1400;
+    var width = 1300;
     var height = 600;
     var margin = 20;
 
     //create svg
-    var svg = d3.select("body").append("svg")
+    var svg = d3.select("#solution").append("svg")
         .attr("width", width)
         .attr("height", height);
 
@@ -122,22 +122,22 @@ function ComposerChart(data){
 
 function addTooltips(composers){
 
-    var div = d3.select("body .tooltip");
+    var div = d3.select("#solution #tooltip");
 
     //add tooltip (one for all)
     if(div.empty()){
-        div = d3.select("body").append("div")
-            .attr("class", "tooltip")
+        div = d3.select("#solution").append("div")
+            .attr("id", "tooltip")
             .style("opacity", 0);
     }
 
-    var body_padding = parseFloat(d3.select("body").style("padding-left"));
+    var body_padding = parseFloat(d3.select("#solution").style("padding-left"));
 
     composers.on("mouseover", function(d, index, array){
 
         div	.html(d.name + "<br/>" + d.yearBirth + "-" + d.yearDeath)
             .style("left", body_padding + array[index].transform.animVal[0].matrix.e + "px")
-            .style("top", (array[index].transform.animVal[0].matrix.f - 0) + "px");
+            .style("top", (array[index].transform.animVal[0].matrix.f - 20) + "px");
         //make tooltip appear
         div.transition()
             .duration(100)

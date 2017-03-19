@@ -8,7 +8,7 @@ function ComposerChart(data){
 
     // TODO: create svg
 
-    // TODO: add axis at the bottom of the svg
+    // TODO: add container for axis at the bottom of the svg
 
 
     // TODO: create the composer bars
@@ -26,12 +26,12 @@ function ComposerChart(data){
     // -------------------------------------------------
     // exit
     // -------------------------------------------------
-    // TODO: here you should remove all composers before adding new ones
+    // TODO: here you can remove composers which are in the exit-selection
 
     // -------------------------------------------------
     // enter
     // -------------------------------------------------
-    // TODO: now add new composers
+    // TODO: add new composers for empty nodes in the enter-selection
     // add groups for composers
 
     // add rectangle to composers

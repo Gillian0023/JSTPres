@@ -72,3 +72,17 @@ text {
   margin-bottom: 1em;
 }
 
+span.cheat-sheat-header{
+  display:block;
+  text-align: left;
+  font-size: 32px;
+  margin: 0px;
+  padding: 0px;
+}
+
+div.cheat-sheet-element{
+  float:left;
+  margin-bottom: 60px;
+  margin-right: 60px;
+}
+
