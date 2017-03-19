@@ -1,19 +1,3 @@
-/*
-// Raphael.js Code
-
-// Creates canvas 320 × 200 at raphaelCircle
-var rPaper = Raphael("raphaelCircle", 320, 200);
-
-// Creates circle at x = 50, y = 40, with radius 10
-var rCircle = rPaper.circle(50, 40, 20);
-// Sets the fill attribute of the circle to red (#f00)
-rCircle.attr("fill", "#f00");
-
-// Sets the stroke attribute of the circle to white
-rCircle.attr("stroke", "#00f");
-
-*/
-
 window.onload = function () {
 
     var paper = Raphael("raphaelCircle", 450, 300);

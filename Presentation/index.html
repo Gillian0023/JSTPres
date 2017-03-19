@@ -317,7 +317,8 @@
                             // and so on...
                         ];
 
-                        var simulation = 
+                        var simulation =
+
                             d3.forceSimulation(circles)
                               .force('collide', d3.forceCollide(20).iterations(4))
                               .on('tick', drawCircles); // call function
@@ -418,7 +419,6 @@
                 </div>
             </section>
             <!-- chart js end -->
-
             <section id="raphaeljs">
                 <h3>Alternatives: <strong class="highlight">Raphaël.js</strong> <img src="img/raphael.png"></h3>
                 <ul>
@@ -452,11 +452,9 @@
                 <div class="right">
                     <div id="raphaelCircle" class="demo"></div>
                 </div>
-                <div class="left">
-
-                </div>
-
+                
             </section>
+
             <section id="nvd3js">
                 <h3>Alternatives: <strong class="highlight">nvd3.js</strong></h3>
                 <ul>
