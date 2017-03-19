@@ -285,7 +285,7 @@
                                 .attr("cx", function(d){return scale(d)});
 
                         var axis = d3.axisBottom(scale).tickFormat(d3.format("d"));
-                        var g = svgElement.append("g").attr("transform", "translate(0, 50)");
+                        var g = svg.append("g").attr("transform", "translate(0, 50)");
                         g.call(axis);
                     </code></pre>
                 </div>
@@ -432,9 +432,26 @@
             <section>
                 <h2>Workshop</h2>
                 TODO: Link how to get start-code (github)<br>
-                TODO: Overview of most important D3 stuff<br>
-                TODO: Example on how it could look like<br>
                 TODO: JSON, how do the data look like
+            </section>
+            <section>
+                <h2>Your Task</h2>
+                <pre style="margin:0px;margin-top:10px; width:500px; float:left"><code data-trim>
+                    [...,{
+                    "yearBirth": 1756,
+                    "yearDeath": 1791,
+                    "period": "Classic",
+                    "name": "Wolfgang Amadeus Mozart"
+                    },
+                    {
+                    "yearBirth": 1770,
+                    "yearDeath": 1827,
+                    "period": "Romantic",
+                    "name": "Ludwig van Beethoven"
+                    },...]
+                </code></pre>
+                <img src="img/composerChart.PNG" style="width:700px;margin-left:50px;margin-top:35px"/>
+
             </section>
             <section>
                 <div id="solution"></div>
