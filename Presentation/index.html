@@ -31,10 +31,10 @@
             <h2>Table of content</h2>
             <ul>
                 <li>Definition</li><!-- Lin -->
-                <li>Getting started</li><!-- Sandro -->
+                <li>Getting Started</li><!-- Sandro -->
                 <li>Focus</li><!-- Daniel -->
-                <li>Look & feel</li><!-- Simon -->
-                <li>Advantages &amp; disadvantages</li><!-- Lin -->
+                <li>Features</li><!-- Simon -->
+                <li>Advantages &amp; Disadvantages</li><!-- Lin -->
                 <li>Alternatives</li>
                 <!-- <ul>
                     <li>Chart.js</li>   Simon
@@ -245,6 +245,17 @@
             </section>
             <section>
                 <h2>Focus: Data Joining</h2>
+                <div style="float:left; width:760px; font-size:50px; margin-top:60px">
+                    <span>Join by key function</span>
+                    <pre style="margin:0px;margin-top:10px; width:100%"><code class="javascript hljs" data-trim>
+                        svg.selectAll("circle")
+                           .data(dataArray, function(d){return d.n});
+                    </code></pre>
+                </div>
+                <img src="img/keyfunction.png" style="width:470px"/>
+            </section>
+            <section>
+                <h2>Focus: Data Joining</h2>
                 <div style="float:left; width:840px; font-size:50px; margin-top:20px; margin-right:10px">
                     <span>General update pattern</span>
                     <pre style="margin:0px;margin-top:10px; width:100%"><code class="javascript hljs" data-trim>
@@ -262,21 +273,10 @@
                 <div id="uc1" style="margin-top:142px"></div>
             </section>
             <section>
-                <h2>Focus: Data Joining</h2>
-                <div style="float:left; width:760px; font-size:50px; margin-top:60px">
-                    <span>Join by key function</span>
-                    <pre style="margin:0px;margin-top:10px; width:100%"><code class="javascript hljs" data-trim>
-                        svg.selectAll("circle")
-                           .data(dataArray, function(d){return d.n});
-                    </code></pre>
-                </div>
-                <img src="img/keyfunction.png" style="width:470px"/>
-            </section>
-            <section>
                 <h2>Focus: Scales &amp; Axes</h2>
                 <div style="width:1200px; font-size:50px; margin-top:50px">
                     <pre style="margin:0px;margin-top:10px; width:100%"><code class="javascript hljs" data-trim>
-                        var scale = d3.scaleLinear().domain([0, 100000]).range([50, width+50]);
+                        var scale = d3.scaleLinear().domain([0, 100000]).range([50, width-50]);
 
                         svg.selectAll("circle").data([1000, 10000, 50000])
                             .enter().append("circle")
@@ -284,35 +284,61 @@
                                 .attr("cx", function(d){return scale(d)});
 
                         var axis = d3.axisBottom(scale).tickFormat(d3.format("d"));
-                        var g = svgElement.append("g").attr("transform", "translate(0, 50)");
+                        var g = svg.append("g").attr("transform", "translate(0, 50)");
                         g.call(axis);
                     </code></pre>
                 </div>
                 <div id="sc1"></div>
             </section>
         </section>
-        <section id="lookandfeel">
-            <!-- <h2>Look & feel</h2> -->
+        <section id="features">
+            <!-- <h2>Features</h2> -->
             <section>
-                <h3>Look & feel</h3>
+                <h3>Features</h3>
                 <ul>
-                    <li>customizable: no branding</li>
-                    <li>many features</li>
+                    <li>Customizable: no branding</li>
+                    <li>Many features</li>
                     <ul>
-                        <li>charts</li>
-                        <li>maps</li>
-                        <li>force-directed graphs</li>
+                        <li>Charts</li>
+                        <li>Maps</li>
+                        <li>Force</li>
                         <li>...</li>
                     </ul>
                 </ul>
             </section>
             <section>
-                <h3>Look & feel: <strong class="highlight">Force Directed Graphs</strong></h3>
-                <canvas id="d3ForceDirection" height="500" width="1000"></canvas><br/>
-                <a href="http://bl.ocks.org/mbostock/raw/2990a882e007f8384b04827617752738">Source</a>
+                <h3>Features: <strong class="highlight">Force</strong></h3>
+                <div class="left">
+                    <pre><code class="javascript hljs" data-trim>
+                        var circles = [
+                            {x: 10, y: 10},
+                            {x: 10, y: 20},
+                            {x: 20, y: 20},
+                            // and so on...
+                        ];
+
+                        var simulation = 
+                            d3.forceSimulation(circles)
+                              .force('collide', d3.forceCollide(20).iterations(4))
+                              .on('tick', drawCircles); // call function
+
+                        d3.select(canvas)
+                          .call(d3.drag()
+                            .container(canvas)
+                            .subject(dragsubject)       // call function
+                            .on('start', dragstarted)   // call function
+                            .on('drag', dragged)        // call function
+                            .on('end', dragended)       // call function
+                          );
+                    </code></pre>
+                </div>
+                <div class="right">
+                    <canvas id="d3ForceDirection" class="demo" height="360" width="360"></canvas><br/>
+                    <a href="http://bl.ocks.org/mbostock/raw/2990a882e007f8384b04827617752738">Source</a>
+                </div>
             </section>
             <section>
-                <h3>Look & feel: <strong class="highlight">Fun With Mozart</strong></h3>
+                <h3>Features: <strong class="highlight">Fun With Mozart</strong></h3>
                 <iframe height="600" width="1280" src="http://koalastothemax.com/?aHR0cDovL2kuaW1ndXIuY29tL1pOYnhsVEsuanBn"></iframe>
             </section>
         </section>
@@ -334,14 +360,14 @@
             </ul>
         </section>
         <section id="alternatives">
-            <section id="alternativesummary">
+            <section id="alternative">
                 <h3>Alternatives</h3>
                 <svg class="alternativepics"></svg>
             </section>
 
             <!-- chart js begin -->
             <section class="chartjs">
-                <h3>Chart.js <img src="img/chartjs.svg"></h3>
+                <h3>Alternatives: <strong class="highlight">Chart.js</strong> <img src="img/chartjs.svg"></h3>
                 <ul>
                     <li>Easy, object oriented client side graphs for designers and developers</li>
                     <li>6 chart types</li>
@@ -349,7 +375,7 @@
                 </ul>
             </section>
             <section class="chartjs">
-                <h3>Chart.js <img src="img/chartjs.svg"></h3>
+                <h3>Alternatives: <strong class="highlight">Chart.js</strong> <img src="img/chartjs.svg"></h3>
                 <div class="left">
                     <pre><code class="html hljs" data-trim>
                         <canvas id="chartID"></canvas>
@@ -376,7 +402,7 @@
                 </div>
             </section>
             <section class="chartjs">
-                <h3>Chart.js <img src="img/chartjs.svg"></h3>
+                <h3>Alternatives: <strong class="highlight">Chart.js</strong> <img src="img/chartjs.svg"></h3>
                 <div class="left">
                     <canvas id="chartJsDemo2" style="height: 500px !important"></canvas>
                 </div>
@@ -394,7 +420,7 @@
             <!-- chart js end -->
 
             <section id="raphaeljs">
-                <h3>Raphaël.js <img src="img/raphael.png"></h3>
+                <h3>Alternatives: <strong class="highlight">Raphaël.js</strong> <img src="img/raphael.png"></h3>
                 <ul>
                     <li>Also uses SVG for rendering</li>
                     <li>Provides abstraction layer for browsers which do not support SVG</li>
@@ -432,7 +458,7 @@
 
             </section>
             <section id="nvd3js">
-                <h3>nvd3.js</h3>
+                <h3>Alternatives: <strong class="highlight">nvd3.js</strong></h3>
                 <ul>
                     <li>Building re-usable charts and chart components</li>
                     <li>Based on D3.js</li>
@@ -449,9 +475,26 @@
             <section>
                 <h2>Workshop</h2>
                 TODO: Link how to get start-code (github)<br>
-                TODO: Overview of most important D3 stuff<br>
-                TODO: Example on how it could look like<br>
                 TODO: JSON, how do the data look like
+            </section>
+            <section>
+                <h2>Your Task</h2>
+                <pre style="margin:0px;margin-top:10px; width:500px; float:left"><code data-trim>
+                    [...,{
+                    "yearBirth": 1756,
+                    "yearDeath": 1791,
+                    "period": "Classic",
+                    "name": "Wolfgang Amadeus Mozart"
+                    },
+                    {
+                    "yearBirth": 1770,
+                    "yearDeath": 1827,
+                    "period": "Romantic",
+                    "name": "Ludwig van Beethoven"
+                    },...]
+                </code></pre>
+                <img src="img/composerChart.PNG" style="width:700px;margin-left:50px;margin-top:35px"/>
+
             </section>
             <section>
                 <div id="solution"></div>
