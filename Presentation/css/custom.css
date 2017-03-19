@@ -58,6 +58,12 @@ text {
 #tableofcontent h2 {
   margin-bottom: 20px;
 }
+.chartjs .chartTypes ul {
+  list-style-type: none;
+}
+.chartjs .chartTypes li {
+  margin-left: 50px;
+}
 .reveal ul {
   line-height: 2em;
 }

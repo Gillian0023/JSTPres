@@ -308,6 +308,12 @@
                 </ul>
             </section>
             <section>
+                <h3>Look & feel: <strong class="highlight">Force Directed Graphs</strong></h3>
+                <canvas id="d3ForceDirection" height="500" width="1000"></canvas><br/>
+                <a href="http://bl.ocks.org/mbostock/raw/2990a882e007f8384b04827617752738">Source</a>
+            </section>
+            <section>
+                <h3>Look & feel: <strong class="highlight">Fun With Mozart</strong></h3>
                 <iframe height="600" width="1280" src="http://koalastothemax.com/?aHR0cDovL2kuaW1ndXIuY29tL1pOYnhsVEsuanBn"></iframe>
             </section>
         </section>
@@ -329,13 +335,61 @@
                 <h3>Alternatives</h3>
                 <svg class="alternativepics"></svg>
             </section>
-            <section id="chartjs">
+
+            <!-- chart js begin -->
+            <section class="chartjs">
                 <h3>Chart.js <img src="img/chartjs.svg"></h3>
                 <ul>
                     <li>Easy, object oriented client side graphs for designers and developers</li>
                     <li>6 chart types</li>
+                    <li>Customizability not as extensive as d3.js</li>
                 </ul>
             </section>
+            <section class="chartjs">
+                <h3>Chart.js <img src="img/chartjs.svg"></h3>
+                <div class="left">
+                    <pre><code class="html hljs" data-trim>
+                        <canvas id="chartID"></canvas>
+                    </code></pre>
+                    <pre><code class="javascript hljs" data-trim>
+                        var context = document.getElementById('chartID')
+                                              .getContext('2d');
+
+                        var myLineChart = new Chart(context, {
+                            type: 'line',
+                            data: {
+                                labels: ['January', 'February', 'March'],
+                                datasets: [
+                                    {    
+                                        data: [10, 30, 100]
+                                    }
+                                ],
+                            }
+                        });
+                    </code></pre>
+                </div>
+                <div class="right">
+                    <canvas id="chartJsDemo1"></canvas>
+                </div>
+            </section>
+            <section class="chartjs">
+                <h3>Chart.js <img src="img/chartjs.svg"></h3>
+                <div class="left">
+                    <canvas id="chartJsDemo2" style="height: 500px !important"></canvas>
+                </div>
+                <div class="right chartTypes">
+                    <ul>
+                        <li id="chartjs-line"><a href="">Line</a></li>
+                        <li id="chartjs-bar"><a href="">Bar</a></li>
+                        <li id="chartjs-radar"><a href="">Radar</a></li>
+                        <li id="chartjs-polar"><a href="">Polar</a></li>
+                        <li id="chartjs-pie"><a href="">Pie</a></li>
+                        <li id="chartjs-bubble"><a href="">Bubble</a></li>
+                    </ul>
+                </div>
+            </section>
+            <!-- chart js end -->
+
             <section id="raphaeljs">
                 <h3>Raphaël.js <img src="img/raphael.png"></h3>
                 <ul>
@@ -464,15 +518,26 @@
         </section>
     </div>
 </div>
+
+<!-- reveal.js -->
 <script src="lib/js/head.min.js"></script>
-<script src="js/reveal.js"></script>
-<script src="js/d3.min.js"></script>
-<script src="js/raphael.min.js"></script>
-<script src="js/chart.min.js"></script>
+<script src="plugin/highlight/highlight.js"></script>
+<script src="scripts/reveal.js"></script>
+
+<!-- libraries -->
+<script src="lib/js/d3.min.js"></script>
+<script src="lib/js/raphael.min.js"></script>
+<script src="lib/js/chart.min.js"></script>
+
+<!-- Demos -->
+<script src="scripts/ChartsChartJs.js"></script>
+<script src="scripts/d3ForceDirection.js"></script>
+
+<!-- Workshop -->
 <script src="scripts/uc1Controller.js"></script>
 <script src="scripts/sc1Controller.js"></script>
 <script src="scripts/solutionController.js"></script>
-<script src="plugin/highlight/highlight.js"></script>
+
 <script>
     // Reveal.js Code
 
@@ -482,6 +547,7 @@
         progress: true,
         history: true,
         center: false,
+        overview: true,
         width: "1280",
         height: "720",
         //margin: 0,
@@ -496,18 +562,6 @@
             { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
         ]
     });
-
-    /*var svg = d3.select("#circle");
-    var circle = svg.select("svg").data([1000]);
-    circle.enter().append("circle")
-        .attr("cy", 0)
-        .attr("cx", 0)
-        .attr('r', function(d) { return Math.sqrt(d); });*/
-//    circle.transition()
-//        .attr("r", function(d) { return Math.sqrt(d); });
-    //circle.exit().transition()
-     //   .attr('r', 0)
-     //   .remove();
 </script>
 <script type="text/javascript">
     // D3.js Code
