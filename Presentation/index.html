@@ -246,6 +246,17 @@
             </section>
             <section>
                 <h2>Focus: Data Joining</h2>
+                <div style="float:left; width:760px; font-size:50px; margin-top:60px">
+                    <span>Join by key function</span>
+                    <pre style="margin:0px;margin-top:10px; width:100%"><code class="javascript hljs" data-trim>
+                        svg.selectAll("circle")
+                           .data(dataArray, function(d){return d.n});
+                    </code></pre>
+                </div>
+                <img src="img/keyfunction.png" style="width:470px"/>
+            </section>
+            <section>
+                <h2>Focus: Data Joining</h2>
                 <div style="float:left; width:840px; font-size:50px; margin-top:20px; margin-right:10px">
                     <span>General update pattern</span>
                     <pre style="margin:0px;margin-top:10px; width:100%"><code class="javascript hljs" data-trim>
@@ -263,21 +274,10 @@
                 <div id="uc1" style="margin-top:142px"></div>
             </section>
             <section>
-                <h2>Focus: Data Joining</h2>
-                <div style="float:left; width:760px; font-size:50px; margin-top:60px">
-                    <span>Join by key function</span>
-                    <pre style="margin:0px;margin-top:10px; width:100%"><code class="javascript hljs" data-trim>
-                        svg.selectAll("circle")
-                           .data(dataArray, function(d){return d.n});
-                    </code></pre>
-                </div>
-                <img src="img/keyfunction.png" style="width:470px"/>
-            </section>
-            <section>
                 <h2>Focus: Scales &amp; Axes</h2>
                 <div style="width:1200px; font-size:50px; margin-top:50px">
                     <pre style="margin:0px;margin-top:10px; width:100%"><code class="javascript hljs" data-trim>
-                        var scale = d3.scaleLinear().domain([0, 100000]).range([50, width+50]);
+                        var scale = d3.scaleLinear().domain([0, 100000]).range([50, width-50]);
 
                         svg.selectAll("circle").data([1000, 10000, 50000])
                             .enter().append("circle")
