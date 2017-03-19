@@ -11,13 +11,13 @@
 .red {
   color: #ff0000;
 }
-svg {
-  margin: 20px auto;
-}
 svg.demo,
 .demo svg {
   border: 2px solid black;
   box-shadow: 0 0 6px #0003;
+}
+pre {
+  margin-top: 0 !important;
 }
 .highlight {
   color: #f89e40;
@@ -68,10 +68,13 @@ text {
   line-height: 2em;
 }
 
-.reveal h2 {
+.reveal h2,
+.reveal h3 {
   margin-bottom: 1em;
 }
-
+#sc1 {
+  margin-top:20px;
+}
 span.cheat-sheat-header{
   display:block;
   text-align: left;
