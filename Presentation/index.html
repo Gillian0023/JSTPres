@@ -308,6 +308,12 @@
                 </ul>
             </section>
             <section>
+                <h3>Look & feel: <strong class="highlight">Force Directed Graphs</strong></h3>
+                <canvas id="d3ForceDirection" height="500" width="1000"></canvas><br/>
+                <a href="http://bl.ocks.org/mbostock/raw/2990a882e007f8384b04827617752738">Source</a>
+            </section>
+            <section>
+                <h3>Look & feel: <strong class="highlight">Fun With Mozart</strong></h3>
                 <iframe height="600" width="1280" src="http://koalastothemax.com/?aHR0cDovL2kuaW1ndXIuY29tL1pOYnhsVEsuanBn"></iframe>
             </section>
         </section>
@@ -360,7 +366,6 @@
                                 ],
                             }
                         });
-
                     </code></pre>
                 </div>
                 <div class="right">
@@ -513,16 +518,26 @@
         </section>
     </div>
 </div>
+
+<!-- reveal.js -->
 <script src="lib/js/head.min.js"></script>
-<script src="js/reveal.js"></script>
-<script src="js/d3.min.js"></script>
-<script src="js/raphael.min.js"></script>
-<script src="js/chart.min.js"></script>
+<script src="plugin/highlight/highlight.js"></script>
+<script src="scripts/reveal.js"></script>
+
+<!-- libraries -->
+<script src="lib/js/d3.min.js"></script>
+<script src="lib/js/raphael.min.js"></script>
+<script src="lib/js/chart.min.js"></script>
+
+<!-- Demos -->
 <script src="scripts/ChartsChartJs.js"></script>
+<script src="scripts/d3ForceDirection.js"></script>
+
+<!-- Workshop -->
 <script src="scripts/uc1Controller.js"></script>
 <script src="scripts/sc1Controller.js"></script>
 <script src="scripts/solutionController.js"></script>
-<script src="plugin/highlight/highlight.js"></script>
+
 <script>
     // Reveal.js Code
 
@@ -532,6 +547,7 @@
         progress: true,
         history: true,
         center: false,
+        overview: true,
         width: "1280",
         height: "720",
         //margin: 0,
