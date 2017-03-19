@@ -2,7 +2,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/white.css">
     <link rel="stylesheet" href="lib/css/zenburn.css">
@@ -320,15 +319,19 @@
         <section>
             <h2>Advantages</h2>
             <ul>
-                <li>Flexible</li>
-                <li>No dependencies</li>
                 <li>Focus on data and visualization</li>
+                <li>Flexible</li>
+                <li>Powerful features</li>
                 <li>Community</li>
             </ul>
         </section>
         <section>
             <h2>Disadvantages</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <ul>
+                <li>No pre-built charts</li>
+                <li>Complexibility</li>
+                <li>Work only on modern browser</li>
+            </ul>
         </section>
         <section id="alternatives">
             <section id="alternativesummary">
@@ -360,7 +363,7 @@
                             data: {
                                 labels: ['January', 'February', 'March'],
                                 datasets: [
-                                    {    
+                                    {
                                         data: [10, 30, 100]
                                     }
                                 ],
@@ -397,6 +400,12 @@
                     <li>Provides abstraction layer for browsers which do not support SVG</li>
                     <li>Uses VML for older IE</li>
                 </ul>
+            </section>
+            <section>
+                <h3>Raphaël.js <img src="img/raphael.png"></h3>
+                <li>Basic shapes: 7 types <br />
+                    (rectangle, ellipse, circle, image, text, path and set)
+                </li>
                 <div class="left">
                     <pre><code class="javascript hljs" data-trim>
                         // Creates canvas 320 × 200 at raphaelCircle
@@ -409,10 +418,18 @@
                         // Sets the stroke attribute of the circle to white
                         circle.attr("stroke", "#fff");
                     </code></pre>
+                    <pre><code class="javascript hljs" data-trim>
+                        var rect1 = paper.rect(70,80,100,12).attr({fill: "orange"});
+                        var ellipse1 = paper.ellipse(150,160,40,30).attr({fill: "red"});
+                    </code></pre>
                 </div>
                 <div class="right">
                     <div id="raphaelCircle" class="demo"></div>
                 </div>
+                <div class="left">
+
+                </div>
+
             </section>
             <section id="nvd3js">
                 <h3>nvd3.js</h3>
@@ -532,6 +549,7 @@
 <!-- Demos -->
 <script src="scripts/ChartsChartJs.js"></script>
 <script src="scripts/d3ForceDirection.js"></script>
+<script src="scripts/Raphael.js"></script>
 
 <!-- Workshop -->
 <script src="scripts/uc1Controller.js"></script>
@@ -726,20 +744,6 @@
         .attr("height", 100)
         .attr("width", 100);*/
 
-</script>
-<script>
-    // Raphael.js Code
-
-    // Creates canvas 320 × 200 at raphaelCircle
-    var rPaper = Raphael("raphaelCircle", 320, 200);
-
-    // Creates circle at x = 50, y = 40, with radius 10
-    var rCircle = rPaper.circle(50, 40, 20);
-    // Sets the fill attribute of the circle to red (#f00)
-    rCircle.attr("fill", "#f00");
-
-    // Sets the stroke attribute of the circle to white
-    rCircle.attr("stroke", "#00f");
 </script>
 <script>
     // Cool Stuff you can do with D3
